@@ -1,11 +1,7 @@
-TODO
-
-- [ ] englishnize
-- [ ] test
-- [ ] write how to use
-- [ ] write example with hydra
-
+featurefuse
 ---
+
+featurefuse is Python package that allows you to choose which feature you make for machine learning models using yaml configuration.
 
 This implementation is based on the below references.
 
@@ -48,4 +44,13 @@ prompt: Which is your recommendation?
 > If you're looking for a name that highlights the library's ability to fuse or combine different features, "FeatureFuse" or "Selectify" could be good options. "FeatureCraft" and "MachinaSelect" convey a sense of precision and automation, which could be suitable if those are important qualities for your library. "FeatLab" and "ModelMuse" both sound like they could be useful tools for researchers or data scientists, while "SmartFeat" and "IntelliSelect" suggest a focus on intelligent and efficient feature selection. Finally, "MindFeat" could work if your library is designed to help researchers gain a deeper understanding of the features used in their models.
 >
 > Ultimately, the name you choose will depend on your target audience and the specific features and benefits of your library. I hope this helps!
+
+
+TODO
+---
+
+- [ ] englishnize
+- [ ] test
+- [ ] write how to use
+- [ ] write example with hydra
 
