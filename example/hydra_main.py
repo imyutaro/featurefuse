@@ -1,25 +1,27 @@
+#######################################
+# This file is broken.
+#######################################
+
 import logging
 import os
-from dataclasses import asdict, dataclass
 from pathlib import Path
 
 import hydra
 import pandas as pd
-from omegaconf import DictConfig, OmegaConf
+from naive_feature import NaiveFeature1, NaiveFeature2, NaiveFeature3, NaiveFeature4
+from omegaconf import DictConfig
 
-from feature.generate import SelectedFeature
+from featurefuse.generator import run
 
 log = logging.getLogger(__name__)
 
 
-@dataclass
-class MyFeatures:
-    from naive_feature import NaiveFeature1, NaiveFeature2, NaiveFeature3, NaiveFeature4
-
-    NaiveFeature1: NaiveFeature1 = NaiveFeature1()
-    NaiveFeature2: NaiveFeature2 = NaiveFeature2()
-    NaiveFeature3: NaiveFeature3 = NaiveFeature3()
-    NaiveFeature4: NaiveFeature4 = NaiveFeature4()
+MyFeatures = {
+    "NaiveFeature1": NaiveFeature1(),
+    "NaiveFeature2": NaiveFeature2(),
+    "NaiveFeature3": NaiveFeature3(),
+    "NaiveFeature4": NaiveFeature4(),
+}
 
 
 @hydra.main(config_path="hydra_config", config_name="default")
@@ -35,11 +37,11 @@ def main(feature_config: DictConfig) -> None:
     )
     log.info(air_passengers_data_1000)
 
-    # 実装した特徴量クラスの辞書
-    fe_dict = asdict(MyFeatures())
+    # Implemented Feature Class
+    fe_dict = MyFeatures
 
-    # 特徴量の作成
-    feature, description = SelectedFeature.generate(
+    # Making Features
+    feature, description = run(
         feature_config,
         fe_dict,
         join_key="Month",
