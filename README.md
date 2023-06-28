@@ -49,8 +49,9 @@ prompt: Which is your recommendation?
 TODO
 ---
 
-- [ ] englishnize
+- [x] englishnize
 - [ ] test
 - [ ] write how to use
 - [ ] write example with hydra
+- [ ] setting up GitHub Actions or CI things
 
