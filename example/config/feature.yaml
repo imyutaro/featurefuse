@@ -1,9 +1,9 @@
 use_feature:
-  - NaiveFeature1
-  - NaiveFeature2
-  - NaiveFeature3
-  - NaiveFeature4
-  - NaiveFeature5
+  - .example.naive_feature.NaiveFeature1
+  - .example.naive_feature.NaiveFeature2
+  - .example.naive_feature.NaiveFeature3
+  - .example.naive_feature.NaiveFeature4
+  - .example.naive_feature.NaiveFeature5
 feature_params:
   NaiveFeature1:
     shift_b_from: 1

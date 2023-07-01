@@ -1,5 +1,6 @@
 import logging
 import textwrap
+from importlib.util import module_from_spec, spec_from_file_location
 from typing import Union
 
 import pandas as pd
@@ -9,7 +10,6 @@ log = logging.getLogger(__name__)
 
 def run(
     feature_config: dict,
-    fe_dict: dict,
     join_key: str,
     **kwargs,
 ) -> Union[pd.DataFrame, pd.DataFrame]:
@@ -35,11 +35,24 @@ def run(
 
     joined_df = pd.DataFrame([])
     descriptions = []
+
     for fe in use_feature:
-        if fe in feature_params and feature_params[fe] is not None:
-            df, description = fe_dict[fe].run(**kwargs, **feature_params[fe])
+        # Import and instantiate only use_feature class written in feature config.
+        #   https://docs.python.org/3/library/importlib.html#importing-a-source-file-directly
+        #   https://stackoverflow.com/questions/4821104/dynamic-instantiation-from-string-name-of-a-class-in-dynamically-imported-module
+        fe_splitted = fe.split(".")
+        filepath, fe_clsname = ".".join(fe_splitted[:-1]), fe_splitted[-1]
+        spec = spec_from_file_location(
+            f".{filepath.replace('.', '/')}.py", f".{filepath.replace('.', '/')}.py"
+        )
+        module = module_from_spec(spec)
+        spec.loader.exec_module(module)
+        fe_cls = getattr(module, fe_clsname)()
+
+        if fe_clsname in feature_params and feature_params[fe_clsname] is not None:
+            df, description = fe_cls.run(**kwargs, **feature_params[fe_clsname])
         else:
-            df, description = fe_dict[fe].run(**kwargs)
+            df, description = fe_cls.run(**kwargs)
 
         description = pd.DataFrame.from_dict(description)
         descriptions.append(description)
