@@ -42,9 +42,8 @@ def run(
         #   https://stackoverflow.com/questions/4821104/dynamic-instantiation-from-string-name-of-a-class-in-dynamically-imported-module
         fe_splitted = fe.split(".")
         filepath, fe_clsname = ".".join(fe_splitted[:-1]), fe_splitted[-1]
-        spec = spec_from_file_location(
-            f".{filepath.replace('.', '/')}.py", f".{filepath.replace('.', '/')}.py"
-        )
+        module_path = f".{filepath.replace('.', '/')}.py"
+        spec = spec_from_file_location(module_path, module_path)
         module = module_from_spec(spec)
         spec.loader.exec_module(module)
         fe_cls = getattr(module, fe_clsname)()
