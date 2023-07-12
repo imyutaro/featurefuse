@@ -65,15 +65,9 @@ def run(
                 on=join_key,
                 suffixes=["", "_duplicated_columns"],
             )
-            joined_df = joined_df.filter(
-                regex="^(?!.*_duplicated_columns$)", axis="columns"
-            )
-            dropped_cols = joined_df.filter(
-                regex="(?!.*_duplicated_columns$)", axis="columns"
-            ).columns
-            message = (
-                f"dropped columns because of duplicated column name : {dropped_cols}"
-            )
+            joined_df = joined_df.filter(regex="^(?!.*_duplicated_columns$)", axis="columns")
+            dropped_cols = joined_df.filter(regex="(?!.*_duplicated_columns$)", axis="columns").columns
+            message = f"dropped columns because of duplicated column name : {dropped_cols}"
             log.info(message)
 
         if len(joined_df) != len(df):
