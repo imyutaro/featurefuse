@@ -79,7 +79,7 @@ def main():
     )
 
     tmp_df = pd.DataFrame([["aaa", 123], ["bbb", 456], ["ccc", 789], ["ddd", 101]], columns=["col1", "col2"])
-    feature, discription = run(config, join_key="col1", tmp_df=tmp_df)
+    feature, description = run(config, join_key="col1", tmp_df=tmp_df)
     print(feature)
 
     # you can use feature DataFrame for machine learning model etc.

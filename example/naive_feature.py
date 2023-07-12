@@ -61,21 +61,13 @@ class NaiveFeature2(Feature):
         )
 
         # min of passengers i month ago
-        fe[f"#Passengers_min{rolling_min}"] = (
-            fe["#Passengers"].rolling(rolling_min).min()
-        )
+        fe[f"#Passengers_min{rolling_min}"] = fe["#Passengers"].rolling(rolling_min).min()
         # max of passengers i month ago
-        fe[f"#Passengers_max{rolling_max}"] = (
-            fe["#Passengers"].rolling(rolling_max).max()
-        )
+        fe[f"#Passengers_max{rolling_max}"] = fe["#Passengers"].rolling(rolling_max).max()
         # mean of passengers i month ago
-        fe[f"#Passengers_mean{rolling_mean}"] = (
-            fe["#Passengers"].rolling(rolling_mean).mean()
-        )
+        fe[f"#Passengers_mean{rolling_mean}"] = fe["#Passengers"].rolling(rolling_mean).mean()
         # median of passengers i month ago
-        fe[f"#Passengers_median{rolling_median}"] = (
-            fe["#Passengers"].rolling(rolling_median).median()
-        )
+        fe[f"#Passengers_median{rolling_median}"] = fe["#Passengers"].rolling(rolling_median).median()
 
         fe = fe.drop("#Passengers", axis="columns")
 
@@ -83,9 +75,7 @@ class NaiveFeature2(Feature):
 
 
 class NaiveFeature3(Feature):
-    def create_feature(
-        self, air_passengers_data: pd.DataFrame, **kwargs
-    ) -> pd.DataFrame:
+    def create_feature(self, air_passengers_data: pd.DataFrame, **kwargs) -> pd.DataFrame:
 
         # Copy only using columns for NaiveFeature3
         fe = air_passengers_data[["Month", "#Passengers"]].copy(deep=True)
@@ -99,9 +89,7 @@ class NaiveFeature3(Feature):
             "#Passengers_ma",
             "mean of passengers in the same month in the past",
         )
-        fe["#Passengers_ma"] = (
-            tmp["#Passengers"] + tmp["#Passengers_b12"] + tmp["#Passengers_b24"]
-        ) / 3
+        fe["#Passengers_ma"] = (tmp["#Passengers"] + tmp["#Passengers_b12"] + tmp["#Passengers_b24"]) / 3
 
         fe = fe.drop("#Passengers", axis="columns")
 
@@ -109,9 +97,7 @@ class NaiveFeature3(Feature):
 
 
 class NaiveFeature4(Feature):
-    def create_feature(
-        self, air_passengers_data: pd.DataFrame, **kwargs
-    ) -> pd.DataFrame:
+    def create_feature(self, air_passengers_data: pd.DataFrame, **kwargs) -> pd.DataFrame:
 
         # Copy only using columns for NaiveFeature4
         fe = air_passengers_data[["Month", "#Passengers"]].copy(deep=True)
@@ -126,9 +112,7 @@ class NaiveFeature4(Feature):
 
 
 class NaiveFeature5(Feature):
-    def create_feature(
-        self, air_passengers_data: pd.DataFrame, **kwargs
-    ) -> pd.DataFrame:
+    def create_feature(self, air_passengers_data: pd.DataFrame, **kwargs) -> pd.DataFrame:
 
         # Copy only using columns for NaiveFeature5
         fe = air_passengers_data[["Month", "#Passengers"]].copy(deep=True)

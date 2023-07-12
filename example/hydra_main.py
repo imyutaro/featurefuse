@@ -27,14 +27,14 @@ MyFeatures = {
 @hydra.main(config_path="hydra_config", config_name="default")
 def main(feature_config: DictConfig) -> None:
 
-    data_url = "https://raw.githubusercontent.com/AileenNielsen/TimeSeriesAnalysisWithPython/master/data/AirPassengers.csv"
+    data_url = (
+        "https://raw.githubusercontent.com/AileenNielsen/TimeSeriesAnalysisWithPython/master/data/AirPassengers.csv"
+    )
     air_passengers_data = pd.read_csv(data_url)
     log.info(air_passengers_data)
 
     air_passengers_data_1000 = air_passengers_data
-    air_passengers_data_1000["#Passengers"] = (
-        air_passengers_data_1000["#Passengers"] + 1000
-    )
+    air_passengers_data_1000["#Passengers"] = air_passengers_data_1000["#Passengers"] + 1000
     log.info(air_passengers_data_1000)
 
     # Implemented Feature Class

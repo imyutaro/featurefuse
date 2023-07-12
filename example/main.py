@@ -26,14 +26,14 @@ def main():
     with open(args.feature_config, mode="r") as f:
         use_feature_config = yaml.safe_load(f)
 
-    data_url = "https://raw.githubusercontent.com/AileenNielsen/TimeSeriesAnalysisWithPython/master/data/AirPassengers.csv"
+    data_url = (
+        "https://raw.githubusercontent.com/AileenNielsen/TimeSeriesAnalysisWithPython/master/data/AirPassengers.csv"
+    )
     air_passengers_data = pd.read_csv(data_url)
     print(air_passengers_data)
 
     air_passengers_data_1000 = air_passengers_data
-    air_passengers_data_1000["#Passengers"] = (
-        air_passengers_data_1000["#Passengers"] + 1000
-    )
+    air_passengers_data_1000["#Passengers"] = air_passengers_data_1000["#Passengers"] + 1000
     print(air_passengers_data_1000)
 
     # Make feature
