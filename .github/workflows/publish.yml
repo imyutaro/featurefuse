@@ -26,8 +26,7 @@ jobs:
           rye build
       - name: Publish distribution to Test PyPI
         run: |
-          rye publish --repository testpypi --repository-url https://test.pypi.org/legacy/ \
-                      --token ${{ secrets.TEST_PYPI_API_TOKEN }} --yes
+          rye publish --repository testpypi --repository-url https://test.pypi.org/legacy/ --token ${{ secrets.TEST_PYPI_API_TOKEN }} --yes
       - name: Publish distribution to PyPI
         if: startsWith(github.ref, 'refs/tags')
         run: |
