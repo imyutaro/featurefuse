@@ -1,13 +1,15 @@
 [project]
 name = "featurefuse"
-version = "0.1.0"
-description = "Add a short description here"
+version = "0.1.2"
+description = "featurefuse is Python package that allows you to choose which feature you make for machine learning models using yaml configuration."
 authors = [
     { name = "yutaro.ueno", email = "yutarofortech@gmail.com" }
 ]
 dependencies = ["pandas~=2.0.2"]
 readme = "README.md"
 requires-python = ">= 3.8"
+license = "MIT"
+repository = "https://github.com/imyutaro/featurefuse"
 
 [build-system]
 requires = ["hatchling"]
