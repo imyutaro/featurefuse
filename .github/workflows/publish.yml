@@ -19,8 +19,10 @@ jobs:
       - name: Install rye
         run: |
           curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
+          echo '$HOME/.rye/env' >> $PATH
           echo '$HOME/.rye/env' >> $GITHUB_PATH
           echo $PATH
+          echo $GITHUB_PATH
       - name: Build
         run: rye build
       - name: Publish distribution to Test PyPI
