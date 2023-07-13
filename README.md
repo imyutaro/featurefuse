@@ -134,9 +134,6 @@ prompt: Which is your recommendation?
 TODO
 ---
 
-- [x] englishnize
-- [ ] test
-- [ ] write how to use
+- [ ] complete test
 - [ ] write example with hydra
-- [ ] setting up GitHub Actions or CI things
 
