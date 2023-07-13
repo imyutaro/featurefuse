@@ -1,6 +1,6 @@
 [project]
 name = "featurefuse"
-version = "0.1.2"
+version = "0.0.0"
 description = "featurefuse is Python package that allows you to choose which feature you make for machine learning models using yaml configuration."
 authors = [
     { name = "yutaro.ueno", email = "yutarofortech@gmail.com" }
