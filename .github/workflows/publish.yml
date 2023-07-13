@@ -20,17 +20,15 @@ jobs:
         shell: bash
         run: |
           curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
+          source "$HOME/.rye/env"
       - name: Build
         run: |
-          echo "$HOME/.rye/env" >> $GITHUB_PATH
           rye build
       - name: Publish distribution to Test PyPI
         run: |
-          echo "$HOME/.rye/env" >> $GITHUB_PATH
           rye publish --repository testpypi --repository-url https://test.pypi.org/legacy/ \
                       --token ${{ secrets.TEST_PYPI_API_TOKEN }} --yes
       - name: Publish distribution to PyPI
         if: startsWith(github.ref, 'refs/tags')
         run: |
-          echo "$HOME/.rye/env" >> $GITHUB_PATH
           rye publish --token ${{ secrets.PYPI_API_TOKEN }} --yes
