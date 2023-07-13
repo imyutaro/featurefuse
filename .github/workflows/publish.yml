@@ -17,6 +17,7 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install rye
+        shell: bash
         run: |
           curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
           echo "$HOME/.rye/env" >> $GITHUB_PATH
